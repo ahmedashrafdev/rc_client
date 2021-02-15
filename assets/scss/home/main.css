@@ -5,7 +5,7 @@
   grid-template-areas: "sidebar products" "logos logos";
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 @media (max-width: 640px) {
@@ -56,10 +56,6 @@
 
 .app .home__grid .logos {
   grid-area: logos;
-}
-
-.app .category-title {
-  margin-bottom: 20px;
 }
 
 @media (max-width: 640px) {

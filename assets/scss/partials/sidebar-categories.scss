@@ -11,16 +11,20 @@
             }
             & li{
                 padding: 20px 10px 20px 40px;
-                color: var(--gray-font);
                 transition: all .3s ease-in-out;
                 cursor: pointer;
                 &.active , &:hover{
                     background-color: var(--gray-bg);
-                    color: black;
+                    & a{
+                        color: black !important;
+                    }
                 }
                 &.active{
                     border-top: 1px solid var(--border-color);
                     border-bottom: 1px solid var(--border-color);
+                }
+                & a{
+                    color: var(--gray-font) !important;
                 }
                 @media (max-width: 640px){
                     padding: 10px 20px;

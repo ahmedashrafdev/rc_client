@@ -1,3 +1,5 @@
+import colors from 'vuetify/es5/util/colors'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -35,16 +37,68 @@ export default {
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: [
+    '@nuxtjs/auth-next',
+    '@nuxtjs/axios'
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ['vue-agile']
   },
-  server: {
-    host: '192.168.1.102' // default: localhost
-  }
+  router: {
+    linkActiveClass: 'active'
+  },
+  // server: {
+  //   host: '192.168.1.102' // default: localhost
+  // },
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      themes: {
+        light: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
+  axios: {
+    proxy: true // Can be also an object with default options
+  },
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'access_token',
+          required: true,
+          type: 'Bearer'
+        },
+        redirect: {
+            login: '/auth',
+            logout: '/',
+            callback: '/auth',
+            home: '/'
+        },
+        user: {
+          property: false,
+          autoFetch: true
+        },
+        endpoints: {   
+          login: { url: `http://localhost:8000/api/login`, method: `post` },
+          logout: { url: `http://localhost:8000/api/user/logout`, method: `post` },
+          user: { url: `http://localhost:8000/api/user`, method: `get` }
+        }
+      }
+    }
+  },
 }

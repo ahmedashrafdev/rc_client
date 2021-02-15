@@ -7,11 +7,11 @@
                     <ul>
                         <li>
                             <span>Call us on</span>
-                            <span class="black">01125115718</span>
+                            <span class="black-font">01125115718</span>
                         </li>
                         <li>
                             <span>or email us at</span>
-                            <span class="black">info@readerscorner.co</span>
+                            <span class="black-font">info@readerscorner.co</span>
                         </li>
                     </ul>
                 </div>
@@ -39,7 +39,7 @@
                     <ul>
                         <li>Sign in</li>
                         <li>Create New Account</li>
-                        <li>My Shopping Cart</li>
+                        <nuxt-link tag="li" :to="{name:'shop-cart'}">My Shopping Cart</nuxt-link>
                         <li>My Wishlist</li>
                         <li>Recently Viewed</li>
                         <li>User Dashboard</li>

@@ -109,6 +109,10 @@
   align-items: center;
 }
 
+.navbar .icons .cart {
+  position: relative;
+}
+
 .navbar .icons .cart, .navbar .icons .search {
   margin-right: 10px;
 }

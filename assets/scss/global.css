@@ -2,7 +2,7 @@
   --primary-color: #68097c;
   --primary-gray: #ebebeb;
   --gray-bg: #f9f9f9;
-  --border-color: #f7f0f0;
+  --border-color: #e7e7e7;
   --gray-font:#685e5e;
   --media-sm: 	640px;
   --media-md: 	768px;
@@ -94,4 +94,255 @@
 
 .view__all:hover h3 {
   color: var(--primary-color);
+}
+
+.border-b {
+  border-color: var(--border-color);
+}
+
+.subcategories .agile__actions {
+  margin-top: -35px;
+}
+
+.v-window.v-item-group {
+  max-height: 100%;
+}
+
+.v-slide-group__content {
+  align-items: center !important;
+}
+
+.os__parent .v-window.v-item-group {
+  height: 350px !important;
+}
+
+.os__parent .v-image {
+  height: 350px !important;
+}
+
+.v-application a {
+  color: #333 !important;
+}
+
+.theme--light.v-application {
+  color: #333 !important;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 !important;
+  }
+}
+
+.v-application ul {
+  padding-left: 0 !important;
+}
+
+.product .product__wrapper .product__details .v-input {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.product .product__wrapper .product__details .v-input__slot::before {
+  border-color: #fff !important;
+}
+
+.product .product__wrapper .product__details .v-text-field__slot {
+  width: 50px !important;
+}
+
+.product .product__wrapper .product__details .v-text-field__slot input {
+  text-align: center;
+}
+
+.border {
+  border-color: var(--border-color);
+}
+
+.atc-btn, .btn {
+  transition: var(--primary-transition);
+  background-color: var(--primary-color);
+  padding: 10px 35px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 100px;
+  width: max-content;
+}
+
+.atc-btn span, .btn span {
+  text-transform: uppercase;
+  color: #fff !important;
+}
+
+.atc-btn svg, .btn svg {
+  fill: #fff !important;
+}
+
+.atc-btn:hover, .btn:hover {
+  background-color: #000;
+}
+
+.dcp .dcp__image .dcp__content .dcp-title .dcp-price .dcp .input .dcp input {
+  color: #fff !important;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.page-header .explore {
+  color: #000;
+  font-size: 24px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.page-header .count {
+  color: var(--gray-font);
+  font-size: 14px;
+}
+
+.v-application .primary--text {
+  color: #68097c !important;
+}
+
+.v-tabs-slider-wrapper {
+  height: 30px;
+}
+
+.price__wrapper {
+  cursor: pointer;
+}
+
+.price__wrapper .v-icon {
+  color: #e62020 !important;
+  transition: var(--primary-transition);
+}
+
+.price__wrapper .v-icon:hover {
+  transform: scale(1.1) !important;
+  color: #000 !important;
+}
+
+.v-data-table__wrapper {
+  overflow: hidden !important;
+}
+
+.btn--gray {
+  background-color: #e9e9e9;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.btn--gray:hover, .btn--gray.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn--red, .btn--blue {
+  margin-left: 15px;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 10px 60px;
+  font-size: 17px;
+  color: #000;
+  background-color: #e9e9e9;
+  font-weight: bold;
+}
+
+.btn--red:hover, .btn--blue:hover {
+  background-color: #ff0707;
+  color: #fff !important;
+}
+
+.btn--blue:hover {
+  background-color: #2e41ec;
+}
+
+.text--1 {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 30px;
+  color: var(--gray-font);
+}
+
+.text--2 {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #000;
+  font-size: 30px;
+}
+
+.u__button--right {
+  display: flex;
+  justify-content: right;
+}
+
+.profile__box .v-tabs-slider {
+  display: none;
+}
+
+.page-header-img {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://www.stylist.co.uk/images/app/uploads/2019/12/17162852/the-end-of-a-book-1268x845.jpeg?w=1640&h=1&fit=max&auto=format%2Ccompress");
+}
+
+.page-header-img h1 {
+  color: white;
+  font-size: 80px;
+  font-weight: 800;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.btn-square {
+  border: 2px solid #000;
+  padding: 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.theme--light.v-btn.v-btn--has-bg {
+  background-color: var(--primary-color) !important;
+}
+
+.theme--light.v-btn.v-btn--has-bg:hover {
+  background-color: #000 !important;
+}
+
+.v-menu__content {
+  margin-top: 32px;
+  z-index: 12;
+}
+
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.no-data h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+}
+
+.no-data a {
+  color: #fff !important;
 }

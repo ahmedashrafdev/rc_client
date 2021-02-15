@@ -9,8 +9,8 @@
             <sidebar/>
           </div>
           <div class="products">
-            <sidebar-categories />
-            <div class="category-title flex justify-between items-center">
+             <SidebarCategories />
+           <div class="category-title flex justify-between items-center">
               <h3>drama</h3>
             </div>
             <div class="products__wrapper">
@@ -26,7 +26,7 @@
 
             <div class="view__all">
               <h3>View All Books</h3>
-            </div>
+            </div> 
             <div class="offer__slider">
               <OfferSlider />
             </div>
@@ -60,6 +60,14 @@ export default {
     OfferSlider,
     SidebarCategories,
     LogosSlider
+  },
+  methods:{
+    getProducts(){
+      this.$store.dispatch('product/get')
+    }
+  },
+  created(){
+    this.getProducts();
   }
 }
 </script>

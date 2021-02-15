@@ -29,12 +29,12 @@
   color: black !important;
 }
 
-.footer__wrapper div ul li .black {
+.footer__wrapper div ul li .black-font {
   color: black;
   transition: all .3s ease-in-out;
 }
 
-.footer__wrapper div ul li .black:hover {
+.footer__wrapper div ul li .black-font:hover {
   color: #979494;
 }
 

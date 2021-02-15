@@ -1,0 +1,86 @@
+.billing{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    grid-template-rows: auto auto;
+    grid-template-areas: "billing payment" "btn btn";
+    &__form{
+        grid-area: billing;
+
+        & .v-input{
+            &:not(:last-child){
+                margin-bottom: 30px;
+            }
+        }
+    }
+    &__payment{
+        grid-area: payment;
+        & .tabs{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-column-gap:50px;
+            & .tab{
+                border:1px solid var(--border-color);
+                color: #000;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: var(--primary-transition);
+                & svg{
+                    fill:#fff;
+                    width: 40px;
+                }
+                & svg ,.v-icon{
+                    margin-right: 20px;
+                }
+                &.active{
+                    color: #fff;
+                    background-color: var(--primary-color);
+                }
+                &:hover{
+                    background-color: #000;
+                    color: #fff;
+
+                    
+                }
+            }
+        }
+    }
+    &__submit{
+        grid-area: btn;
+        &.btn{
+            color:#fff !important;
+            min-width:200px;
+            text-transform: uppercase;
+            text-align:center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    & .header{
+        border-bottom: 1px solid var(--border-color);
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        // font-weight: thin;
+        color:#000;
+        font-size: 24px;
+        padding: 15px 0;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+        & span{
+            font-size: 16px;
+            color: var(--gray-font);
+            text-transform: lowercase;
+            & a{
+                transition: var(--primary-transition);
+                color: var(--primary-color) !important;
+                &:hover{
+                    color:#fff !important
+                }
+            }
+        }
+    }
+}

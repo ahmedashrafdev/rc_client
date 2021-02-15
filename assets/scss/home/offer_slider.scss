@@ -1,30 +1,52 @@
 .os{
+
+    & .v-carousel__item{
+        height: 350px !important;
+        @media (max-width: 640px){
+            height: 200px !important;
+
+        }
+    }
     @media (max-width: 640px){
         max-width: 100vw;
     }
     &__parent{
         position: relative;
+        height: 350px;
+        @media (max-width: 640px){
+            height: 200px;
+
+        }
+
     }
     &__indicators{
         position: absolute;
-        left: 50%;
-        bottom: 20px;
+        left: 20px;
+        top: 50%;
         transform: translateY(-50%);
-        @media (max-width: 640px){
-            display: none;
-        }
         & span{
-            height: 3px;
-            width: 35px;
-            display: inline-block;
-            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 40px;
             cursor: pointer;
             transition: var(--primary-transition);
+            &::before{
+                content: "";
+                width: 3px;
+                height: 80%;
+                background-color:#fff;
+            }
             &:hover{
-                background-color: #000;
+                &::before{
+                    background-color: #000;
+                }
             }
             &.active{
-                background-color: #000;
+                &::before{
+                    background-color: #000;
+                }
             }
             &:not(:last-child){
                 margin-right: 2px;
@@ -140,12 +162,12 @@
     & .image{
         background-image:url('../../images/02.png');
     }
-    &:first-child{
+    &-1{
         & .image{
             background-image:url('../../images/01.png');
         }
     }
-    &:last-child{
+    &-2{
         & .image{
             background-image:url('../../images/03.png');
         }

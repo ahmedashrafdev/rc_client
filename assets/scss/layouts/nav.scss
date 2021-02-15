@@ -96,6 +96,9 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        & .cart{
+            position: relative;
+        }
         & .cart ,  .search{
             margin-right: 10px;
         }

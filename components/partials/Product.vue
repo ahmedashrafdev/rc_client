@@ -1,5 +1,6 @@
 <template>
-   <div class="product">
+   <div class="product" @clock.prevent="$router.push({name:'product-slug'})">
+       <div class="label"><span>25%</span><span>off</span></div>
        <div class="product__wrapper">
            <div class="product__img">
                <figure>
@@ -7,7 +8,7 @@
                </figure>
            </div>    
            <div class="product__title">
-               <h3>William's Winter Wish</h3>
+               <nuxt-link tag="h3" :to="{name:'shop-slug' , params:{slug:'asd'}}">William's Winter Wish</nuxt-link>
            </div>
            <div class="product__price">
                <span>EGP200</span>
