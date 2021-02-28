@@ -8,7 +8,14 @@
 }
 
 .slider{
-    background: linear-gradient(294deg, rgb(46, 102, 139) 0%, rgb(54, 119, 162) 100%);
+    background-color: #1d2951;
+    &:first-child{
+        background: linear-gradient(294deg, rgb(46, 102, 139) 0%, rgb(54, 119, 162) 100%);
+    }
+    &:last-child{
+        background-color: #3F8D5B;
+    }
+
     height: 70vh;
     min-height: 500px;
     @media (max-width: 640px){
@@ -65,7 +72,7 @@
             & a{
                 padding: 10px 30px;
                 border: 1px solid #fff;
-                color: #fff;
+                color: #fff !important;
                 transition:var(--primary-transition);
 
             }
@@ -114,6 +121,11 @@
         bottom: 1px;
         display: flex;
         cursor: pointer;
+
+        @media (max-width: 640px){
+            bottom: auto;
+            top:-11px;
+        }
         & .prev {
             margin-right: 5px;
         }

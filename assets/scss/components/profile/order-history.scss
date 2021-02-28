@@ -26,6 +26,16 @@
         overflow: hidden;
         position: relative;
         transition: var(--primary-transition);
+        @media (max-width: 640px) {
+            height: 140px;
+            padding: 10px 20px;
+        }
+        & .address-title{
+            @media (max-width: 640px){
+                height: 20px;
+                overflow: hidden;
+            }
+        }
         & .close{
             position: absolute;
             top: 20px;
@@ -42,9 +52,15 @@
         & .content{
             visibility: hidden;
         }
-        & .btn-more .btn{
-            color:#fff !important;
+        & .btn-more {
+            @media (max-width: 640px) {
+                margin-top: 20px;
+            }
+            & .btn{
+                color:#fff !important;
+            }
         }
+            
         &.active{
             height: auto;
             & .content , & .close{
@@ -52,7 +68,7 @@
             }
             & .btn-more{
                 visibility: hidden;
-            
+                margin-top: 0;
             }
         }
         

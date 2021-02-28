@@ -41,8 +41,7 @@
 .dcp__content-title {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
-  height: 53px;
+  max-height: 53px;
   overflow: hidden;
   transition: var(--primary-transition);
 }
@@ -51,8 +50,8 @@
   color: var(--primary-color);
 }
 
-.dcp__content-price del, .dcp__content-price span {
-  color: #eae5e5 !important;
+.dcp__content-author {
+  font-size: 14px;
 }
 
 .dcp__content .input {
@@ -64,17 +63,12 @@
   height: 30px;
 }
 
-.dcp__content .input i.v-icon {
-  color: #fff;
-}
-
 .dcp__content .input i.v-icon:not(:last-child) {
   margin-right: 15px;
 }
 
 .dcp__content .input span {
   margin-right: 15px;
-  color: #fff !important;
 }
 
 .dcp .no-items {
@@ -84,5 +78,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
 }

@@ -42,6 +42,12 @@
   transition: var(--primary-transition);
 }
 
+@media (max-width: 640px) {
+  .os__indicators span {
+    height: 30px;
+  }
+}
+
 .os__indicators span::before {
   content: "";
   width: 3px;

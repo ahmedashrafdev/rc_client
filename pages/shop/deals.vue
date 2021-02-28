@@ -14,24 +14,6 @@
                 <div class="icon-2">2</div> -->
               </div>
               <div class="controllers flex">
-                <div class="sortby mr-4">
-                  <v-select
-                    :items="items"
-                    item-text="state"
-                    item-value="abbr"
-                    label="Sort by"
-                    class="w-32"
-                    single-line
-                  ></v-select>
-                </div>
-                <div class="showing"><v-select
-                    :items="items"
-                    item-text="state"
-                    item-value="abbr"
-                    label="Showing"
-                    class="w-24"
-                    single-line
-                  ></v-select></div>
               </div>
             </div>
             <div class="products__wrapper">

@@ -3,14 +3,14 @@
         <div class="add_new" @click.prevent="insert">
             <v-icon>mdi-plus</v-icon>
         </div>
-        <div class="no-data" v-if="addresses.length == 0">
-            <h2>you dosn't have any addresses yet</h2>
+        <div class="no-data text-center" v-if="addresses.length == 0">
+            <h2>you don't have any addresses yet</h2>
             <a href="#" class="btn" @click.prevent="insert">Add New Address</a>
         </div>
         <div class="history__details" v-else v-for="address in addresses" :key="address.id" :class="{active : active == address.id}">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center mobile-column">
                 <div>
-                    <h1 class="text--2">title: {{address.title}}</h1>
+                    <h1 class="text--2 address-title">title: {{address.title}}</h1>
                     <h1 class="text--2">city: {{address.city}}</h1>
                 </div>
                 <div  class="btn-more" @click.prevent="active = address.id">
@@ -77,6 +77,7 @@ export default {
         },
         insert(){
             this.$store.commit('ui/setAddAddress' , {active : true})
+            // this.$router.push({name : 'profile-create-address'})
         }
     },
     watch:{

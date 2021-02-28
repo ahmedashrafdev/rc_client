@@ -1,6 +1,15 @@
 <template>
     <div class="login" :class="{active : $route.query.tab == 'login'}">
+      <div v-if="loginReuired">
+          <span>Please login to be able to continue checkout</span>
+      </div>
         <div class="header">sign in</div>
+        <div v-if="errors && typeof errors == 'string'">
+          <span class="text-danger">{{errors}}</span>
+        </div>
+        <div v-if="errors && typeof errors == 'array'">
+          <span v-for="(err , index) in errors" :key="index">{{err}}</span>
+        </div>
         <v-form v-model="valid" ref="loginForm">
             <v-text-field
                 label="Email"
@@ -9,6 +18,7 @@
                 ></v-text-field>
             <v-text-field
                 label="Password"
+                type="password"
                 :rules="rules.password"
                 v-model="form.password">
             </v-text-field>
@@ -31,6 +41,7 @@ import { mapGetters } from 'vuex';
         if(!this.loading){
           this.$refs.loginForm.validate();
           if(this.valid){
+            this.form.ip = localStorage.getItem('ip')
             this.$store.dispatch('myAuth/login' , {"auth" : this.$auth ,'form' :this.form})
           }
         }
@@ -58,7 +69,9 @@ import { mapGetters } from 'vuex';
     }),
     computed: {
       ...mapGetters({
-          loading: 'myAuth/loading'
+          loading: 'myAuth/loading',
+          loginReuired: 'ui/loginRequired',
+          errors: 'ui/formErrors'
       })
     },
   }

@@ -4,6 +4,9 @@
     &:hover{
         & .bs-product__title , .bs-product__price{
             color: var(--primary-color);
+            & h3{
+                height: auto;
+            }
         }
         & .bs-product__img{
             transform: scale(1.03);
@@ -33,6 +36,8 @@
         & h3{
             font-style: 22px;
             font-weight: 600;
+            height: 50px;
+            overflow: hidden;
             @media (max-width: 640px){
                 font-style: 14px;
                 font-weight: 300;

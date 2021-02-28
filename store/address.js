@@ -46,11 +46,12 @@ export const mutations = {
 };
 
 export const actions = {
-    get({commit}) {
+    get({commit} , payload) {
         commit('setLoading' , true)
+        console.log(payload)
         return new Promise((resolve, reject) => {
             http
-            .get("user/address")
+            .post("user/address" , payload)
             .then(res => {
                 commit('setAddresses' , res.data)
 
@@ -81,6 +82,7 @@ export const actions = {
     create({commit , dispatch},payload) {
         commit('setLoading' , true)
         return new Promise((resolve, reject) => {
+            payload.type = "insert"
             http
             .post(`user/address/` , payload)
             .then(res => {

@@ -7,6 +7,10 @@
   color: var(--primary-color);
 }
 
+.bs-product:hover .bs-product__title h3, .bs-product:hover .bs-product__price h3 {
+  height: auto;
+}
+
 .bs-product:hover .bs-product__img {
   transform: scale(1.03);
 }
@@ -43,6 +47,8 @@
 .bs-product__title h3 {
   font-style: 22px;
   font-weight: 600;
+  height: 50px;
+  overflow: hidden;
 }
 
 @media (max-width: 640px) {

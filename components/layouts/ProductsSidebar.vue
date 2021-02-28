@@ -1,9 +1,9 @@
 <template>
     <div>
+        <sidebar-languages />
         <sidebar-categories />
-        <sidebar-authors/>
-        <sidebar-publishers/>
-        
+        <sidebar-ages v-if="active" />      
+        <sidebar-authors/>  
     </div>
 </template>
 
@@ -11,13 +11,21 @@
 <script>
 import SidebarCategories from "@/components/partials/SidebarCategories.vue"
 import SidebarAuthors from "@/components/partials/SidebarAuthors.vue"
-import SidebarPublishers from "@/components/partials/SidebarPublishers.vue"
-
+import SidebarAges from "@/components/partials/SidebarAges.vue"
+import {mapGetters} from 'vuex'
+import SidebarLanguages from '../partials/SidebarLanguages.vue'
 export default {
+  computed: {
+      ...mapGetters({
+          active: 'ui/ageActive',
+      })
+
+  },
   components:{
-    SidebarPublishers,
     SidebarAuthors,
-    SidebarCategories
+    SidebarAges,
+    SidebarCategories,
+    SidebarLanguages
   }
 }
 </script>

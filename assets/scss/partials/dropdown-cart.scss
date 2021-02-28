@@ -1,30 +1,12 @@
 .cartdropdown{
-    position: absolute;
-    top: 100%;
-    cursor:"auto";
-    right: 0;
-    margin-top: 37px;
-    transition: var(--primary-transition);
-    transform: translate(45px , 30px);
-    z-index: 10;
-    visibility: hidden;
-    opacity: 0;
-    @media (max-width: 640px){
-        margin-top: 30px;
-    }
-    & .remove{
+    .badge{
         position: absolute;
-        color: #fff;
         top: 0;
-        right: 15px;
-        font-size: 20px;
-
-    }
-    &.active{
-        opacity: 1;
-        transform: translate(45px , 0);
-        visibility: visible;
-
+        left: 0;
+        padding: 10px;
+        border-radius: 50%;
+        color: #fff;
+        background-color: var(--primary-color);
     }
     &::before{
         content: "";
@@ -39,6 +21,17 @@
     }
     &__wrapper{
         background-color: #000;
+        &::before{
+            content: "";
+            position: absolute;
+            top: -10px;
+            right: 50px;
+            height: 0;
+            border-style: solid;
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent #000 transparent;
+    
+        }
     }
     &__total{
         width: 100%;

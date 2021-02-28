@@ -1,3 +1,9 @@
+@media (max-width: 640px) {
+  .profile {
+    padding: 20px !important;
+  }
+}
+
 .profile__main--heading {
   color: black;
   text-transform: capitalize;

@@ -28,6 +28,20 @@
   transition: var(--primary-transition);
 }
 
+@media (max-width: 640px) {
+  .history__details {
+    height: 140px;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .history__details .address-title {
+    height: 20px;
+    overflow: hidden;
+  }
+}
+
 .history__details .close {
   position: absolute;
   top: 20px;
@@ -46,6 +60,12 @@
   visibility: hidden;
 }
 
+@media (max-width: 640px) {
+  .history__details .btn-more {
+    margin-top: 20px;
+  }
+}
+
 .history__details .btn-more .btn {
   color: #fff !important;
 }
@@ -60,6 +80,7 @@
 
 .history__details.active .btn-more {
   visibility: hidden;
+  margin-top: 0;
 }
 
 .history__details--box--1 {

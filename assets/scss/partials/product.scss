@@ -17,8 +17,14 @@
                 }
                 // height: 100%;
             }
+            & .product__title{
+                & h3{
+                    height: auto;
+                }
+            }
             & .product__title , .product__price{
                 color: var(--primary-color);
+
             }
     
     
@@ -27,10 +33,21 @@
     
     &__wrapper{
         padding: 30px 10px;
+        @media (max-width: 640px){
+            padding: 30px 0;
+        }
     }
     &__img{
         padding: 10px 40px;
         background-color: var(--primary-gray);
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media (max-width: 640px){
+            padding: 10px 20px;
+
+        }
     }
     
     &__title{
@@ -42,6 +59,8 @@
             font-style: 22px;
             transition: all .3s ease-in-out;
             font-weight: 600;
+            height: 50px;
+            overflow: hidden;
         }
     }
     &__price{

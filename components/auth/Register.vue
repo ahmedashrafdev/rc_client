@@ -1,6 +1,12 @@
 <template>
     <div class="login" :class="{active : $route.query.tab == 'register'}">
         <div class="header">sign up</div>
+        <div v-if="errors && typeof errors == 'string'">
+          <span class="text-danger">{{errors}}</span>
+        </div>
+        <div v-if="errors && typeof errors == 'array'">
+          <span v-for="(err , index) in errors" :key="index">{{err}}</span>
+        </div>
         <v-form v-model="valid" ref="registerForm">
             <v-text-field
                 label="Name"
@@ -20,6 +26,7 @@
             :rules="rules.phone"
             hide-details="auto">
             </v-text-field>
+            <span class="text-danger" v-if="errors.phone">{{errors.phone[0]}}</span>
             <v-text-field
                 label="Password"
                 type="password"
@@ -53,6 +60,7 @@ import { mapGetters } from 'vuex';
         if(!this.loading){
           this.$refs.registerForm.validate();
           if(this.valid){
+            this.form.ip = localStorage.getItem('ip')
             this.$store.dispatch('myAuth/register' , {"auth" : this.$auth ,'form' :this.form})
           }
         }
@@ -63,7 +71,9 @@ import { mapGetters } from 'vuex';
     },
     computed: {
       ...mapGetters({
-          loading: 'myAuth/registerLoading'
+          loading: 'myAuth/registerLoading',
+          errors: 'ui/formErrorsRegister'
+
       })
     },
     data: () => ({
@@ -93,11 +103,11 @@ import { mapGetters } from 'vuex';
       },
       
       form:{
-        email : 'ahmed2@readerscorner.co',
-        password : '123456',
-        name : 'ahmed ashraf',
-        phone : '010220525456',
-        password_confirmation : '123456',
+        email :'',
+        password :'',
+        name :'',
+        phone :'',
+        password_confirmation :'',
       },
     }),
   }

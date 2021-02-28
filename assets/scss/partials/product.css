@@ -18,6 +18,9 @@
   .product:hover .product__atc span {
     opacity: 1;
   }
+  .product:hover .product__title h3 {
+    height: auto;
+  }
   .product:hover .product__title, .product:hover .product__price {
     color: var(--primary-color);
   }
@@ -27,9 +30,25 @@
   padding: 30px 10px;
 }
 
+@media (max-width: 640px) {
+  .product__wrapper {
+    padding: 30px 0;
+  }
+}
+
 .product__img {
   padding: 10px 40px;
   background-color: var(--primary-gray);
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .product__img {
+    padding: 10px 20px;
+  }
 }
 
 .product__title {
@@ -43,6 +62,8 @@
   font-style: 22px;
   transition: all .3s ease-in-out;
   font-weight: 600;
+  height: 50px;
+  overflow: hidden;
 }
 
 .product__price {

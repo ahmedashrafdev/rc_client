@@ -6,15 +6,7 @@
     >
       {{ snackbar.text }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          text
-          v-bind="attrs"
-          @click="toggle"
-        >
-          Close
-        </v-btn>
-      </template>
+     
     </v-snackbar>
   </div>
 </template>
@@ -30,7 +22,7 @@ export default {
     },
     methods: {
       ...mapMutations({
-          toggle: 'ui/toggleSnackBar' // map `this.add()` to `this.$store.commit('increment')`
+          toggle: 'ui/setSnackbar' // map `this.add()` to `this.$store.commit('increment')`
       }),
     }
 }

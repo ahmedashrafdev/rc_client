@@ -2,7 +2,7 @@
     <div class="breadcrumbs bg-gray">
         <div class="container">
             <ul class="breadcrumbs__list">
-                <li>Home</li>
+                <nuxt-link tag="li" class="pointer" to="/">Home</nuxt-link>
                 <li>Shop</li>
             </ul>
         </div>

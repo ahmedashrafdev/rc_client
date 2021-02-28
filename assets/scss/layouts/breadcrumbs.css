@@ -4,6 +4,12 @@
   padding: 10px 0;
 }
 
+@media (max-width: 640px) {
+  .breadcrumbs {
+    padding: 10px;
+  }
+}
+
 .breadcrumbs__list {
   display: flex;
 }

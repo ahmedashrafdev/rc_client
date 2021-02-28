@@ -38,17 +38,21 @@
         &-title{
             font-size: 16px;
             font-weight: 600;
-            color: #fff;
-            height: 53px;
+            // color: #fff;
+            max-height: 53px;
             overflow: hidden;
             transition: var(--primary-transition);
             &:hover{
                 color: var(--primary-color);
             }
         }
+        &-author{
+            // color:#fff;
+            font-size: 14px;
+        }
         &-price{
             & del , span{
-                color:#eae5e5 !important
+                // color:#eae5e5 !important
             }
         }
         & .input{
@@ -59,14 +63,14 @@
             align-items: center;
             height: 30px;
             & i.v-icon{
-                color: #fff;
+                // color: #fff;
                 &:not(:last-child){
                     margin-right: 15px;
                 }
             }
             & span{
                 margin-right: 15px;
-                color: #fff !important;
+                // color: #fff !important;
             }
         }
     }
@@ -77,6 +81,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #fff;
+        // color: #fff;
     }
 }

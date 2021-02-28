@@ -1,4 +1,7 @@
 .profile{
+    @media (max-width: 640px){
+        padding: 20px !important;
+    }
     &__main{
         
         &--heading{

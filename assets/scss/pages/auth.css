@@ -7,6 +7,19 @@
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .auth__wrapper {
+    padding: 20px;
+    flex-direction: column;
+  }
+}
+
 .auth__wrapper > div {
   width: 100%;
+}
+
+@media (max-width: 640px) {
+  .auth__wrapper > div {
+    margin-bottom: 20px;
+  }
 }

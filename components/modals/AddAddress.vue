@@ -69,7 +69,7 @@
             color="primary"
             text
             @click.prevent="create"
-            :loading="loading"
+            :loading="false"
           >
             Create
           </v-btn>
@@ -89,6 +89,7 @@
 <script>
 
 import { mapGetters , mapMutations } from 'vuex';
+// import http from "@/repositories/Repository.js";
 
   export default {
     data: () => ({
@@ -119,6 +120,7 @@ import { mapGetters , mapMutations } from 'vuex';
         street : '',
         state : '',
         floor : '',
+        type : 'insert',
         phone : '',
         apartment : '',
         city_id : null,
@@ -136,9 +138,10 @@ import { mapGetters , mapMutations } from 'vuex';
         create(){
           this.validate()
           if(this.valid){
-            this.$store.dispatch('address/create' , this.form)
-            .then(() => {
+            this.$store.dispatch('address/get' , this.form)
+            .then(res => {
               this.$store.commit('ui/togglAddAddress')
+              this.$emit('created' , res.id)
             })
           }
         }, 

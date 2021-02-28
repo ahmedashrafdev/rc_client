@@ -2,6 +2,9 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  devServer: {
+    proxy: 'http://34.89.53.209/rcapi/public'
+  },
   head: {
     title: 'readerscorner',
     htmlAttrs: {
@@ -48,19 +51,25 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vue-agile']
+    transpile: ['vue-agile'],
+    loaders:  {
+      vue: {
+         prettify: false
+      }
+    }
   },
   router: {
     linkActiveClass: 'active'
   },
   // server: {
-  //   host: '192.168.1.102' // default: localhost
+  //   host: '192.168.1.102' // default: 192.168.1.102
   // },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
       themes: {
         light: {
+          primaryColor: '#68097c',
           primary: colors.blue.darken2,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
@@ -73,8 +82,11 @@ export default {
     }
   },
   axios: {
-    proxy: true // Can be also an object with default options
+    proxy: false // Can be also an object with default options
   },
+  // server :{
+  //   host : '192.168.43.213'
+  // },
   auth: {
     strategies: {
       local: {
@@ -89,6 +101,7 @@ export default {
             callback: '/auth',
             home: '/'
         },
+        watchLoggedIn:false,
         user: {
           property: false,
           autoFetch: true
