@@ -29,7 +29,7 @@
             <no-data class="products" v-else/>
 
             <nuxt-link :to="{name : 'shop'}" class="view__all">
-              <h3>View All Books</h3>
+              <h3 class="mt-4">View All Books</h3>
             </nuxt-link> 
             <!-- <div class="offer__slider">
               <OfferSlider />
@@ -41,7 +41,6 @@
 
           <div class="logos">
              <LogosSlider/>
-            
           </div>
 
         </div>

@@ -198,6 +198,8 @@ export const actions = {
         } else{
             //check if category is not equals to kids to make disable ages
             commit('ui/setAgeActive' , false , { root: true })
+            commit('ui/setSubAges' , false , { root: true })
+
         }
 
         //check if there is no category to do some configurations on ui

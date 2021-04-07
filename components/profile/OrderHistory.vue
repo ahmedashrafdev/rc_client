@@ -12,7 +12,7 @@
                         <span class="black-text uppercase">PAYMENT METHOD:{{order.gateway}}</span>
                     </li>
                     <li class=" mb-4">
-                        <span class="black-text uppercase">INVOICE DATE:{{formate(order.created_at)}}</span>
+                        <span class="black-text uppercase">INVOICE DATE:{{formate(order.closed_at)}}</span>
                     </li>
                         <li class=" mb-4">
                         <span class="black-text uppercase">STATUS:{{order.status}}</span>
@@ -128,8 +128,9 @@ export default {
             return [year, month, day].join('-')
         }
     },
-    watch:{
-    },
+    mounted(){
+        console.log(typeof orders)
+    }
 }
 </script>
  <style  scoped src="@/assets/scss/components/profile/order-history.css"></style>

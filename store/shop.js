@@ -4,6 +4,7 @@ export const state = () => ({
     loading: false,
     couponLoading: false,
     couponNotFound: null,
+    iframe:null,
     cart: []
 });
 
@@ -20,8 +21,9 @@ export const getters = {
     cart(state){
         return state.cart
     },
-    
-
+    iframe(state){
+        return state.iframe
+    }
 };
 
 
@@ -37,18 +39,21 @@ export const mutations = {
     },
     setCouponNotFound(state , payload){
         state.couponNotFound = payload
+    },
+    setIframe(state,payload){
+        state.iframe = payload
     }
 
     
 };
 
 export const actions = {
-    get({commit} , ip) 
+    get({commit}) 
     {
         commit('setLoading' , true)
         return new Promise((resolve, reject) => {
             http
-            .post(`cart/get` , {ip : ip})
+            .post(`cart/get`)
             .then( res => {
                 commit('setCart' , res.data)
                 commit('setLoading' , false)
@@ -66,7 +71,7 @@ export const actions = {
             http
             .post(`cart` , payload)
             .then( res => {
-                dispatch('get' , {ip : payload.ip})
+                dispatch('get')
                 const snackbar = {
                     active : true,
                     text: 'item added to cart successfully'
@@ -79,15 +84,17 @@ export const actions = {
             })
           })
     },
-    update({commit , dispatch} , payload) 
+    update({commit} , payload) 
     {
-        commit('setLoading' , true)
         return new Promise((resolve, reject) => {
             http
             .put(`cart/${payload.isbn}` , payload.payload)
             .then( res => {
-                dispatch('get' , {ip : payload.payload.ip})
-                commit('setLoading' , false)
+                http
+                .post(`cart/get`)
+                .then( res => {
+                    commit('setCart' , res.data)
+                })
                 resolve(res.data);
             })
             .catch(e => {
@@ -113,15 +120,23 @@ export const actions = {
             })
           })
     },
-    applyShipping({commit , dispatch} , payload) 
+    applyShipping({commit} , payload) 
     {
-        commit('setLoading' , true)
         return new Promise((resolve, reject) => {
             http
             .post(`cart/shipping` , payload)
             .then( res => {
-                commit('setLoading' , false)
-                dispatch('get' , {ip : payload.ip})
+                http
+                .post(`cart/get`)
+                .then( res => {
+                    commit('setCart' , res.data)
+                })
+                
+                const snackbar = {
+                    active : true,
+                    text: 'Shipping applied'
+                }
+                commit('ui/setSnackbar' , snackbar , { root: true })
                 resolve(res.data);
             })
             .catch(e => {
@@ -129,15 +144,42 @@ export const actions = {
             })
           })
     },
-    applyCoupon({commit , dispatch} , payload){
-        commit('setCouponLoading' , true)
+    applyGateway({commit} , payload) 
+    {
+        return new Promise((resolve, reject) => {
+            http
+            .post(`checkout/gateway` , payload)
+            .then( res => {
+                http
+                .post(`cart/get`)
+                .then( res => {
+                    commit('setCart' , res.data)
+                })
+                
+                if(res.data.url){
+                    commit('setIframe' , res.data.url)
+                } else {
+                    commit('setIframe' , null)
+                }
+                resolve(res.data);
+            })
+            .catch(e => {
+                reject(e.response.data);
+            })
+          })
+    },
+    applyCoupon({commit} , payload){
         return new Promise((resolve, reject) => {
             http
             .post(`cart/coupon` , payload)
             .then( res => {
                 commit('setCouponLoading' , false)
                 commit('setCouponNotFound' , null)
-                dispatch('get' , {ip : payload.ip})
+                http
+                .post(`cart/get`)
+                .then( res => {
+                    commit('setCart' , res.data)
+                })
                 const snackbar = {
                     active : true,
                     text: 'Coupon Applie Successfully'
@@ -152,15 +194,17 @@ export const actions = {
             })
           })
     },
-    delete({commit , dispatch} , payload) 
+    delete({commit} , payload) 
     {
-        commit('setLoading' , true)
         return new Promise((resolve, reject) => {
             http
             .post(`cart/delete` , payload)
             .then( res => {
-                dispatch('get' , {ip : payload.ip})
-                commit('setLoading' , false)
+                http
+                .post(`cart/get`)
+                .then( res => {
+                    commit('setCart' , res.data)
+                })
                 resolve(res.data);
             })
             .catch(e => {

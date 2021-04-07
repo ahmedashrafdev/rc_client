@@ -11,17 +11,8 @@
 }
 
 .slider {
-  background-color: #1d2951;
   height: 70vh;
   min-height: 500px;
-}
-
-.slider:first-child {
-  background: linear-gradient(294deg, #2e668b 0%, #3677a2 100%);
-}
-
-.slider:last-child {
-  background-color: #3F8D5B;
 }
 
 @media (max-width: 640px) {
@@ -178,7 +169,7 @@
 .slider__indicators {
   position: absolute;
   left: 50%;
-  bottom: 0;
+  top: -11px;
   display: flex;
   transform: translateY(-50%);
 }

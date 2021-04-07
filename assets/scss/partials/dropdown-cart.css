@@ -1,3 +1,7 @@
+.cartdropdown {
+  min-width: 430px;
+}
+
 .cartdropdown .badge {
   position: absolute;
   top: 0;

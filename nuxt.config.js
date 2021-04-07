@@ -5,6 +5,9 @@ export default {
   devServer: {
     proxy: 'http://34.89.53.209/rcapi/public'
   },
+  api: {
+    baseURL: ''
+  },
   head: {
     title: 'readerscorner',
     htmlAttrs: {
@@ -32,10 +35,19 @@ export default {
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
+  pwa: {
+    manifest: {
+      name: 'Readerscorner',
+      lang: 'en',
+      useWebmanifestExtension: false
+    }
+  },
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     // https://go.nuxtjs.dev/tailwindcss
@@ -61,9 +73,9 @@ export default {
   router: {
     linkActiveClass: 'active'
   },
-  // server: {
-  //   host: '192.168.1.102' // default: 192.168.1.102
-  // },
+  server: {
+    host:  process.env.APP_URL
+  },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -80,7 +92,7 @@ export default {
         }
       }
     }
-  },
+  },  
   axios: {
     proxy: false // Can be also an object with default options
   },
@@ -107,9 +119,9 @@ export default {
           autoFetch: true
         },
         endpoints: {   
-          login: { url: `http://localhost:8000/api/login`, method: `post` },
-          logout: { url: `http://localhost:8000/api/user/logout`, method: `post` },
-          user: { url: `http://localhost:8000/api/user`, method: `get` }
+          login: { url: `${process.env.API_URL}login`, method: `post` },
+          logout: { url: `${process.env.API_URL}user/logout`, method: `post` },
+          user: { url: `${process.env.API_URL}user`, method: `get` }
         }
       }
     }

@@ -5,12 +5,12 @@
             <div class="dcp__remove pointer">
                 <span @click.prevent="remove(product.isbn)">&times;</span>
             </div>
-            <product-image :product="product" class="dcp__image" />
+            <product-image :product="product" class="dcp__image pointer"  @click.prevent="$router.push({name:'shop-slug' , params:{slug:product.slug}})" />
             <div class="dcp__content">
-                <div class="dcp__content-title" @click.prevent="$router.push({name:'shop-slug' , params:{slug:product.slug}})">
+                <div class="dcp__content-title pointer" @click.prevent="$router.push({name:'shop-slug' , params:{slug:product.slug}})">
                     <h2>{{product.title}}</h2>
                 </div>
-                <div class="dcp__content-author" @click.prevent="$router.push({name:'shop' , query:{author:product.author_slug}})">
+                <div v-if="product.author" class="dcp__content-author" @click.prevent="$router.push({name:'shop' , query:{author:product.author_slug}})">
                     <h2>BY {{product.author}}</h2>
                 </div>
                 <div class="dcp__content-price">

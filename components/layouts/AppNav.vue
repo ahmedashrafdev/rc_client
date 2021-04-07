@@ -3,8 +3,8 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="left-wrapper">
-                    <div class="logo">
-                        <img src="https://readerscorner.co:2083/cpsess8472162342/viewer/home%2freaderscorner%2fpublic_html%2fstorage%2fapp%2fpublic%2fsettings%2fMay2019/S3fivD7C4Y2oXfnGaEsa.png" alt="">
+                    <div class="logo pointer"  @click.prevent="$router.push('/')">
+                        <img src="~@/assets/images/logo.png" alt="">
                     </div>
                     <nav class="list" :class="{active : appDrawer}">
                         <div class="hidden close-icon" @click.prevent="toggleNav(false)">
@@ -27,7 +27,7 @@
                             <nuxt-link tag="li" :to="{name : 'shop'}" class="nav-item" :class="{activenav : $route.name == 'shop' && typeof $route.query.category === 'undefined' && typeof $route.query.key === 'undefined'}">Books</nuxt-link>
                             <nuxt-link tag="li" :to="{name : 'shop' ,query :{category : 'nonfiction'} }" class="nav-item"  :class="{activenav : $route.name == 'shop' && $route.query.category === 'nonfiction'}">Nonfiction</nuxt-link>
                             <nuxt-link tag="li" :to="{name : 'shop' , query :{key : 'deals'}}" class="nav-item" :class="{activenav : $route.name == 'shop' &&  $route.query.key === 'deals'}">Deals</nuxt-link>
-                            <nuxt-link tag="li" :to="{name : 'shop' , query:{category : 'kids'}}" class="nav-item" :class="{activenav : $route.name == 'shop' && $route.query.category === 'kids'}">Chilren's</nuxt-link>
+                            <nuxt-link tag="li" :to="{name : 'shop' , query:{category : 'kids'}}" class="nav-item" :class="{activenav : $route.name == 'shop' && $route.query.category === 'kids'}">Kids</nuxt-link>
                             <!-- <nuxt-link tag="li" :to="{name : 'about'}" class="nav-item">About</nuxt-link> -->
                             <!-- <nuxt-link tag="li" :to="{name : 'contact'}" class="nav-item">Contact</nuxt-link> -->
                             <nav-filters class="nav-filters"/>

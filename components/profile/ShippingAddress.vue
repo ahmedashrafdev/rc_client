@@ -3,7 +3,7 @@
         <div class="add_new" @click.prevent="insert">
             <v-icon>mdi-plus</v-icon>
         </div>
-        <div class="no-data text-center" v-if="addresses.length == 0">
+        <div class="no-data text-center" v-if="typeof addresses == 'array' && addresses.length == 0">
             <h2>you don't have any addresses yet</h2>
             <a href="#" class="btn" @click.prevent="insert">Add New Address</a>
         </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <edit-address />
-        <add-address />
+        <add-address @created="created"/>
     </div>
 </template>
 <script>
@@ -74,6 +74,9 @@ export default {
         edit(id){
             this.$store.dispatch('address/find' , id)
             this.$store.commit('ui/setEditAddress' , {active : true , id : id})
+        },
+        created(){
+            this.$store.dispatch('address/get')
         },
         insert(){
             this.$store.commit('ui/setAddAddress' , {active : true})

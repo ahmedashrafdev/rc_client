@@ -29,7 +29,7 @@
                         <nuxt-link tag="li" :to="{name : 'login' , query:{tab:'register'} }" v-if="!$auth.loggedIn">Create New Account</nuxt-link>
                         <nuxt-link tag="li" :to="{name : 'profile' }" v-if="$auth.loggedIn">Orders</nuxt-link>
                         <nuxt-link tag="li" :to="{name : 'profile', query : {tab : '1'} }" v-if="$auth.loggedIn">addresses</nuxt-link>
-                        <nuxt-link tag="li" :to="{name:'shop-cart'}">My Shopping Cart</nuxt-link>
+                        <a class="pointer" @click.prevent="goToCart">My Shopping Cart</a>
                     </ul>
                 </div>
                 <!-- <div class="about">
@@ -52,5 +52,27 @@
     </footer>
 </template>
 
+<script>
+export default {
+    methods:{
+        goToCart(){
+            // this.$router.push({name : 'shop-cart'})
+            if(this.$auth.loggedIn){
+                this.$router.push({name : 'shop-cart'})
+
+            } else {
+                const snackbar = {
+                active : true,
+                text: 'please login to continue'
+                }
+                  this.$store.commit('ui/setLoginRequired' , true)
+                  this.$store.commit('ui/setSnackbar' , snackbar)
+                    this.$router.push({name : 'login' , query : {tab : 'login'}})
+
+            }
+        }
+    }
+}
+</script>
 
 <style  scoped src="@/assets/scss/layouts/footer.css"></style>

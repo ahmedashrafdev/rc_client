@@ -5,7 +5,7 @@
             :show-arrows="false"
             v-model="currentSLide"
           >
-            <v-carousel-item class="slider">
+            <v-carousel-item class="slider" :style="{backgroundColor : '#ba9fd6' }">
               <div class="container h-full  relative">
                 <div class="h-full">
                       <div class="slider__wrapper h-full ">
@@ -18,7 +18,7 @@
                           </div>
                         </div>
                         <div class="slider__img">
-                          <figure>
+                          <figure @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'First-Encyclopedia-of-Seas-and-Oceans'}})">
                               <img src="https://www.theschoolrun.com/sites/theschoolrun.com/files/u9/first_encyclopaedia_of_seas_and_oceans.jpg" alt="">
                           </figure>
                         </div>
@@ -26,7 +26,7 @@
                 </div>
               </div>
             </v-carousel-item>
-            <v-carousel-item class="slider">
+            <v-carousel-item class="slider" :style="{backgroundColor : '#947fab' }">
               <div class="container h-full  relative">
                 <div class="h-full">
                       <div class="slider__wrapper h-full ">
@@ -34,20 +34,20 @@
                           <div class="tag">BOOKS</div>
                           <div class="header">LOVE OF</div>
                           <div class="sub-header">STORY</div>
-                          <div class="slider-btn" @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'First-Encyclopedia-of-Seas-and-Oceans'}})">
+                          <div class="slider-btn" @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'قواعد-العشق-الأربعون'}})">
                             <a href="">SHOP NOW</a>
                           </div>
                         </div>
                         <div class="slider__img">
-                          <figure>
-                              <img src="https://images-na.ssl-images-amazon.com/images/I/51qgcnB4NDL._SX355_BO1,204,203,200_.jpg" alt="">
+                          <figure @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'قواعد-العشق-الأربعون'}})">
+                              <img src="https://cdn.jamalon.com/c/p/3087504.jpg" alt="قواعد العشق الاربعون">
                           </figure>
                         </div>
                       </div>
                 </div>
               </div>
             </v-carousel-item>
-            <v-carousel-item class="slider">
+            <v-carousel-item class="slider" :style="{backgroundColor : '#6f5f80'}">
               <div class="container h-full  relative">
                 <div class="h-full">
                       <div class="slider__wrapper h-full ">
@@ -55,13 +55,13 @@
                           <div class="tag">BOOKS</div>
                           <div class="header">LOVE OF</div>
                           <div class="sub-header">STORY</div>
-                          <div class="slider-btn" @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'First-Encyclopedia-of-Seas-and-Oceans'}})">
+                          <div class="slider-btn" @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'علامات-الحب-السبعة'}})">
                             <a href="">SHOP NOW</a>
                           </div>
                         </div>
                         <div class="slider__img">
-                          <figure>
-                              <img src="https://d1b14unh5d6w7g.cloudfront.net/1788791118.01.S001.LXXXXXXX.jpg?Expires=1614638824&Signature=e3XZ1azpnvhgcWgqGUmCu+7VPwwaauXoV6WAsy1wp7zyGGeag2FzJIm/6CqgposM8ebZxHDHpspC2wbK2pghYnQLCFPs8fSeFl2Is0kzCJ1pqh2cVezoAz7KR3lc0+/nBmrggkLFwQMtaiLYnO610YYk0qe2Er2P6HZ8Jj9ofKk=&Key-Pair-Id=APKAIUO27P366FGALUMQ" alt="">
+                          <figure @click.prevent="$router.push({name : 'shop-slug' , params : {slug : 'علامات-الحب-السبعة'}})">
+                              <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1452893056l/28575817._SY475_.jpg">
                           </figure>
                         </div>
                       </div>
@@ -71,7 +71,7 @@
           </v-carousel>
           <div class="container relative controllers__wrapper">
             <div class="slider__controllers">
-              <div class="prev" @click="currentSLide++"><v-icon >mdi-arrow-left</v-icon></div>
+              <div class="prev" @click="currentSLide--"><v-icon >mdi-arrow-left</v-icon></div>
               <div class="next" @click="currentSLide++"><v-icon>mdi-arrow-right</v-icon></div>
             </div>
             <!-- <div class="slider__indicators">

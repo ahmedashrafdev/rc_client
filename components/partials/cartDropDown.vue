@@ -66,7 +66,7 @@ import { mapGetters } from 'vuex';
     },
     methods:{
         getCart(){
-            this.$store.dispatch('shop/get' , localStorage.getItem('ip'));
+            this.$store.dispatch('shop/get');
         },
         goToCart(){
             this.menu = false

@@ -1,7 +1,7 @@
 <template>
     <div class="login" :class="{active : $route.query.tab == 'login'}">
       <div v-if="loginReuired">
-          <span>Please login to be able to continue checkout</span>
+          <span>Please login to be able to add items to you cart</span>
       </div>
         <div class="header">sign in</div>
         <div v-if="errors && typeof errors == 'string'">
@@ -41,8 +41,25 @@ import { mapGetters } from 'vuex';
         if(!this.loading){
           this.$refs.loginForm.validate();
           if(this.valid){
-            this.form.ip = localStorage.getItem('ip')
             this.$store.dispatch('myAuth/login' , {"auth" : this.$auth ,'form' :this.form})
+            .then(() => {
+              let product = window.localStorage.getItem('product')
+              let qty = window.localStorage.getItem('qty') || 1
+              if(product){
+                const payload = {
+                  product, 
+                  qty
+
+                }
+                setTimeout(() => {
+                  this.$store.dispatch('shop/create' , payload)
+                  .then(() => {
+                      window.localStorage.removeItem('product')
+                      window.localStorage.removeItem('qty')
+                  })
+                },2000)
+              }
+            })
           }
         }
       }
@@ -62,8 +79,8 @@ import { mapGetters } from 'vuex';
       },
       
       form:{
-        email : 'ahmed@readerscorner.co',
-        password : '123456',
+        email : '',
+        password : '',
       },
      
     }),

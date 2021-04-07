@@ -48,7 +48,6 @@ export const mutations = {
 export const actions = {
     get({commit} , payload) {
         commit('setLoading' , true)
-        console.log(payload)
         return new Promise((resolve, reject) => {
             http
             .post("user/address" , payload)
@@ -79,14 +78,18 @@ export const actions = {
             })
         })
     },
-    create({commit , dispatch},payload) {
+    create({commit},payload) {
         commit('setLoading' , true)
         return new Promise((resolve, reject) => {
             payload.type = "insert"
             http
             .post(`user/address/` , payload)
             .then(res => {
-                dispatch('get')
+                http
+                .post("user/address")
+                .then(res => {
+                    commit('setAddresses' , res.data)
+                })
                 commit('setLoading' , false)
                 const snackbar = {
                     active : true,

@@ -1,16 +1,16 @@
 <template>
    <div class="product" @clock.prevent="$router.push({name:'product-slug'})">
        
-       <div class="label" v-if="typeof product.price != 'undefined' && product.price.old_price"><span>30%</span><span>off</span></div>
+       <div class="label" v-if="typeof product.price != 'undefined' && product.old_price"><span>30%</span><span>off</span></div>
        <div class="product__wrapper">
           <product-image :product="product" class="dcp__image" />    
            <div class="product__title">
                <nuxt-link tag="h3" :to="{name:'shop-slug' , params:{slug:product.slug}}">{{product.title}}</nuxt-link>
-               <nuxt-link tag="h2" :to="{name:'shop' , query:{author:product.author_slug}}">By: {{product.name}}</nuxt-link>
+               <nuxt-link tag="h2" v-if="product.name" :to="{name:'shop' , query:{author:product.author_slug}}">By: {{product.name}}</nuxt-link>
            </div>
            <div class="product__price">
-               <del v-if="typeof product.price != 'undefined' && product.price.old_price">EGP{{product.price.old_price}}</del>
-               <span v-if="typeof product.price != 'undefined'">EGP{{product.price.price}}</span>
+               <del v-if="typeof product.price != 'undefined' && product.old_price">EGP{{product.old_price}}</del>
+               <span v-if="typeof product.price != 'undefined'">EGP{{product.price}}</span>
                
            </div>
            <div class="product__atc" @click.prevent="addToCart(product.isbn)">
@@ -31,12 +31,25 @@ export default {
    },
    methods:{
        addToCart(product){
-           const payload = {
-                product,
-                qty:1,
-                ip: localStorage.getItem('ip')
+           if(this.$auth.loggedIn){
+            const payload = {
+                    product,
+                    qty:1,
+                }
+            this.$store.dispatch('shop/create' , payload)
+               window.localStorage.removeItem('product')
+               window.localStorage.removeItem('qty')
+           }else {
+               window.localStorage.setItem('product' , product)
+               window.localStorage.setItem('qty' , 1)
+                const snackbar = {
+                    active : true,
+                    text: 'Please login to be able to add items to your cart'
+                }
+                this.$store.commit('ui/setSnackbar' , snackbar)
+                this.$store.commit('ui/setLoginRequired' , true)
+                this.$router.push({name:'login' , query:{tab:'login'}})
             }
-           this.$store.dispatch('shop/create' , payload)
        }
    }
 }

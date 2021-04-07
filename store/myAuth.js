@@ -88,7 +88,7 @@ export const actions = {
             http
             .post("register" , payload.form )
             .then( async (data) => {
-                payload.auth.loginWith('local', { data: {email :payload.form.email , password : payload.form.password , ip : payload.form.ip} })
+                payload.auth.loginWith('local', { data: payload.form })
                 commit('setRegisterLoading' , false)
                 const snackbar = {
                     active : true,

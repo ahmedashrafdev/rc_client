@@ -9,15 +9,21 @@
                 </div>
                 <div class="product__details">
                     <ul class="mb-4 product__details-categories">
-                        <li>adults</li>
-                        <li>nonfiction</li>
+                        <li>{{product.categories[0].title}}</li>
+                        <li v-if="product.categories[0].title">{{product.categories[1].title}}</li>
                     </ul>
                     <h1 class="mb-4 product__details-title">
                         {{product.title}}
                     </h1>
+                    <h2 class="mb-4 " v-if="product.author">
+                        BY: {{product.author.name}}
+                    </h2>
+                    <h2 class="mb-4">
+                        ISBN: {{product.isbn}}
+                    </h2>
                     <div class="mb-4 product__details-price py-4 border-b"  v-if="typeof product.price !== 'undefiend'">
-                        <del v-if="product.price.old_price">EGP{{product.price.old_price}}</del>
-                        <span>EGP{{product.price.price}}</span>
+                        <del v-if="product.old_price">EGP{{product.old_price}}</del>
+                        <span>EGP{{product.price}}</span>
                     </div>
                     <p class="mb-4 product__details-discripion">{{product.description}}</p>
                     <div class="mb-4 product__details-qty">
@@ -104,12 +110,29 @@ export default {
             }
         },
         addToCart(){
-           const payload = {
-                product: this.product.isbn,
-                ip: localStorage.getItem('ip'),
-                qty:this.cartCount
+            if(this.$auth.loggedIn){
+                const payload = {
+                    product: this.product.isbn,
+                    qty:this.cartCount
+                }
+                this.$store.dispatch('shop/create' , payload)
+                window.localStorage.removeItem('product')
+                window.localStorage.removeItem('qty')
+                window.localStorage.setItem('product' , product)
+                window.localStorage.setItem('qty' , 1)
+            } else {
+                window.localStorage.removeItem('product')
+                window.localStorage.removeItem('qty')
+                window.localStorage.setItem('product' , this.product.isbn)
+                window.localStorage.setItem('qty' , 1)
+                const snackbar = {
+                    active : true,
+                    text: 'Please login to be able to add items to your cart'
+                }
+                this.$store.commit('ui/setSnackbar' , snackbar)
+                this.$store.commit('ui/setLoginRequired' , true)
+                this.$router.push({name:'login' , query:{tab:'login'}})
             }
-           this.$store.dispatch('shop/create' , payload)
         }
     },
     created(){

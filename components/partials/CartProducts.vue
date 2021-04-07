@@ -64,7 +64,7 @@
                                         <div class="product__title">
                                             <nuxt-link tag="h3" :to="{name:'shop-slug' , params:{slug:product.slug}}">{{product.title}}</nuxt-link>
                                         </div>
-                                        <div class="product__author">
+                                        <div class="product__author" v-if="product.author">
                                             <nuxt-link tag="h3" :to="{name:'shop' , params:{author:product.author_slug}}">By:{{product.author}}</nuxt-link>
                                         </div>
                                         <div class="border input mt-2 p-1 lg-hidden">
@@ -137,13 +137,13 @@
                         <span>SUBTOTAL</span>
                         <span class="price">EGP{{cart.subtotal}}</span>
                     </div>
-                    <div class="sum" v-if="cart.percentOff">
-                        <span>DISCOUNT({{cart.percentOff}}%)</span>
-                        <span class="price">EGP{{cart.discounVal}}</span>
+                    <div class="sum" v-if="cart.discount_percent">
+                        <span>DISCOUNT({{cart.discount_percent}}%)</span>
+                        <span class="price">EGP{{cart.discount_value}}</span>
                     </div>
-                    <div class="sum" v-else-if="cart.discounVal">
+                    <div class="sum" v-else-if="cart.discount_value">
                         <span>DISCOUNT</span>
-                        <span class="price">EGP{{cart.discounVal}}</span>
+                        <span class="price">EGP{{cart.discount_value}}</span>
                     </div>
                     <div class="sum">
                         <span>TOTAL</span>

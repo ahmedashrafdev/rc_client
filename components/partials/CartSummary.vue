@@ -25,13 +25,13 @@
                     <h2>SHIPPING: </h2>
                     <h2>EGP{{cart.shipping}}</h2>
                 </div>
-                <div class="flex w-full justify-between items-center px-4"  v-if="cart.percentOff">
-                    <h2>DISCOUNT({{cart.percentOff}}%): </h2>
-                    <h2>EGP{{cart.discounVal}}</h2>
+                <div class="flex w-full justify-between items-center px-4"  v-if="cart.discount_percent">
+                    <h2>DISCOUNT({{cart.discount_percent}}%): </h2>
+                    <h2>EGP{{cart.discount_value}}</h2>
                 </div>
-                <div class="flex w-full justify-between items-center px-4"  v-else-if="cart.discounVal">
+                <div class="flex w-full justify-between items-center px-4"  v-else-if="cart.discount_value">
                     <h2>DISCOUNT: </h2>
-                    <h2>EGP{{cart.discounVal}}</h2>
+                    <h2>EGP{{cart.discount_value}}</h2>
                 </div>
                 <div class="flex w-full justify-between items-center px-4">
                     <h2>TOTAL: </h2>

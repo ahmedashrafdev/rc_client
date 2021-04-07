@@ -9,6 +9,29 @@
       <delete-modal @remove="remove"/>
       <login-modal v-if="!$auth.loggedIn"/>
       <snack-bar/>
+      <!-- <v-bottom-navigation
+        v-model="value"
+        :input-value="active"
+        color="indigo"
+      >
+        <v-btn>
+          <span>Recents</span>
+
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Favorites</span>
+
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Nearby</span>
+
+          <v-icon>mdi-map-marker</v-icon>
+        </v-btn>
+      </v-bottom-navigation> -->
     </div>
   </v-app>
 </template> 
@@ -43,14 +66,6 @@ export default {
       remove: 'global/remove' // map `this.add()` to `this.$store.dispatch('increment')`
     })
   },
-  mounted(){
-    if(!localStorage.getItem('ip')){
-      const r = Math.random()*(200000000000000000000-100000000000000000) + 100000000000000000
-      localStorage.setItem('ip', Math.floor(r));
-    }
-
-  }
-  
 }
 </script>
 

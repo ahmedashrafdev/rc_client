@@ -46,7 +46,7 @@
             </v-btn>
         </v-form>
         <div class="disabled">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium quam voluptatem numquam similique commodi vel,</p>
+          <p>Lorem ssum dolor sit amet, consectetur adipisicing elit. Praesentium quam voluptatem numquam similique commodi vel,</p>
           <nuxt-link class="btn-square block"  :to="{name : 'login' , query :{tab:'register'}}">click here to sign up</nuxt-link>
         </div>
     </div>
@@ -60,7 +60,6 @@ import { mapGetters } from 'vuex';
         if(!this.loading){
           this.$refs.registerForm.validate();
           if(this.valid){
-            this.form.ip = localStorage.getItem('ip')
             this.$store.dispatch('myAuth/register' , {"auth" : this.$auth ,'form' :this.form})
           }
         }
